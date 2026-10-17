@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YESTERBAY Coffee & Eatery - Satu Tempat Sejuta Cerita</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== 1. NAVBAR ==================== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="logo">
+        <span class="logo-name">YESTERBAY</span>
+        <span class="logo-sub">Coffee & Eatery</span>
+      </a>
+
+      <!-- Menu Navigasi Utama -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Tombol Keranjang Belanja -->
+      <div class="nav-actions">
+        <button class="cart-btn" id="openCartBtn" aria-label="Buka Keranjang">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-text">Cart</span>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <!-- Tombol Hamburger untuk Tampilan HP -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 2. HERO SECTION ==================== -->
+  <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="hero-tagline">welcome to</p>
+      <h1 class="hero-title">YESTERBAY</h1>
+      <h2 class="hero-subtitle">Coffee & Eatery</h2>
+      <p class="hero-slogan">"Satu Tempat Sejuta Cerita"</p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">Order Now</a>
+        <a href="#menu" class="btn btn-secondary">View Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. MENU SECTION ==================== -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Pilihan Terbaik Kami</span>
+        <h2 class="section-title">Our Menu</h2>
+        <div class="divider"></div>
+        <p class="section-desc">Nikmati sajian kopi pilihan, minuman lezat, dan camilan renyah untuk menemani setiap ceritamu.</p>
+      </div>
+
+      <!-- Container Card Menu Produk (Render via JavaScript & Fallback Semantik) -->
+      <div class="menu-grid" id="menuGrid">
+        <!-- Card Menu akan ditampilkan melalui script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. ABOUT SECTION ==================== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-box">
+        <div class="section-header">
+          <span class="section-tag">Tentang Kami</span>
+          <h2 class="section-title">About YESTERBAY</h2>
+          <div class="divider"></div>
+        </div>
+        <p class="about-text">
+          <strong>YESTERBAY Coffee & Eatery</strong> adalah tempat untuk menikmati kopi, makanan ringan, dan cerita dalam suasana yang nyaman. Kami percaya bahwa setiap cangkir kopi memiliki cerita tersendiri.
+        </p>
+        <p class="about-quote">"Satu Tempat Sejuta Cerita"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. CONTACT SECTION ==================== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Hubungi Kami</span>
+        <h2 class="section-title">Contact Us</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="contact-card">
+        <h3 class="contact-name">YESTERBAY Coffee & Eatery</h3>
+        <ul class="contact-list">
+          <li class="contact-item">
+            <span class="icon">📸</span>
+            <div>
+              <strong>Instagram</strong>
+              <p><a href="https://instagram.com/yesterbay" target="_blank" rel="noopener">@bayupnnggr_</a></p>
+            </div>
+          </li>
+          <li class="contact-item">
+            <span class="icon">💬</span>
+            <div>
+              <strong>WhatsApp</strong>
+              <p>082313864248</p>
+            </div>
+          </li>
+          <li class="contact-item">
+            <span class="icon">📍</span>
+            <div>
+              <strong>Alamat</strong>
+              <p>Pemalang, Jawa Tengah</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 7. FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-copy">&copy; 2026 YESTERBAY Coffee & Eatery. All rights reserved.</p>
+      <p class="footer-slogan">"Satu Tempat Sejuta Cerita"</p>
+    </div>
+  </footer>
+
+  <!-- ==================== 4. SHOPPING CART MODAL ==================== -->
+  <div class="modal-backdrop" id="cartModal">
+    <div class="modal-card cart-modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Keranjang Belanja</h3>
+        <button class="close-btn" id="closeCartBtn" aria-label="Tutup Keranjang">&times;</button>
+      </div>
+
+      <div class="cart-body">
+        <!-- List item di keranjang -->
+        <div class="cart-items" id="cartItemsContainer">
+          <!-- Item akan diisi otomatis oleh JavaScript -->
+        </div>
+
+        <!-- Ringkasan Total Harga -->
+        <div class="cart-summary" id="cartSummary">
+          <div class="summary-row">
+            <span>Total Bayar:</span>
+            <span class="total-price" id="cartTotalPrice">Rp0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="continueShoppingBtn">Lanjut Belanja</button>
+        <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FORM CHECKOUT MODAL ==================== -->
+  <div class="modal-backdrop" id="checkoutModal">
+    <div class="modal-card checkout-modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Form Pemesanan</h3>
+        <button class="close-btn" id="closeCheckoutBtn" aria-label="Tutup Form">&times;</button>
+      </div>
+
+      <form id="checkoutForm" class="checkout-form">
+        <div class="form-body">
+          <div class="order-summary-small">
+            <p>Total Pesanan: <strong id="checkoutSummaryTotal">Rp0</strong> (<span id="checkoutSummaryCount">0</span> item)</p>
+          </div>
+
+          <div class="form-group">
+            <label for="customerName">Nama Lengkap <span class="required">*</span></label>
+            <input type="text" id="customerName" name="customerName" placeholder="Contoh: Bayu Aji Panenggar" required autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="customerWhatsapp">Nomor WhatsApp <span class="required">*</span></label>
+            <input type="tel" id="customerWhatsapp" name="customerWhatsapp" placeholder="Contoh: 081234567890" required autocomplete="tel">
+          </div>
+
+          <div class="form-group">
+            <label for="customerAddress">Alamat Pengiriman / Meja <span class="required">*</span></label>
+            <textarea id="customerAddress" name="customerAddress" rows="2" placeholder="Masukkan alamat lengkap atau nomor meja" required autocomplete="street-address"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="orderNotes">Catatan Pesanan</label>
+            <textarea id="orderNotes" name="orderNotes" rows="2" placeholder="Contoh: Less sugar, extra ice, dll. (Opsional)"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="backToCartBtn">Kembali</button>
+          <button type="submit" class="btn btn-primary">Kirim Pesanan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL PESANAN BERHASIL ==================== -->
+  <div class="modal-backdrop" id="successModal">
+    <div class="modal-card success-modal-card">
+      <div class="success-icon">☕</div>
+      <h3 class="success-title">Pesanan Berhasil!</h3>
+      <p class="success-message" id="successMessage">
+        Pesanan berhasil dibuat. Terima kasih sudah memilih YESTERBAY!
+      </p>
+      <div class="modal-footer" style="justify-content: center;">
+        <button class="btn btn-primary" id="closeSuccessBtn">Selesai</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,943 @@
+/* ==========================================================================
+   YESTERBAY Coffee & Eatery - Main Stylesheet
+   Dibuat dengan CSS dasar (Flexbox, Grid, Media Queries)
+   Palet Warna:
+   - Coklat Tua: #4B2E1F
+   - Coklat    : #6F4E37
+   - Cream     : #F5EBDD
+   - Putih     : #FFFFFF
+   ========================================================================== */
+
+/* --- Reset & Variabel CSS --- */
+:root {
+  --primary-dark: #4B2E1F;
+  --primary-brown: #6F4E37;
+  --secondary-cream: #F5EBDD;
+  --light-cream: #FAF6F0;
+  --text-dark: #2B1D14;
+  --text-muted: #6B5E55;
+  --white: #FFFFFF;
+  --border-color: #E2D5C3;
+  --danger-color: #C0392B;
+  --success-color: #27AE60;
+  --shadow-sm: 0 2px 6px rgba(75, 46, 31, 0.08);
+  --shadow-md: 0 4px 14px rgba(75, 46, 31, 0.12);
+  --shadow-lg: 0 8px 24px rgba(75, 46, 31, 0.16);
+  --transition: all 0.25s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-dark);
+  background-color: var(--light-cream);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* --- Section Header Helper --- */
+.section-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-brown);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.section-title {
+  font-size: 2.1rem;
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.divider {
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-brown);
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 0.98rem;
+}
+
+/* --- Tombol Reusable --- */
+.btn {
+  display: inline-block;
+  padding: 11px 24px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--primary-dark);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-brown);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-dark);
+  border: 1.5px solid var(--primary-dark);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-dark);
+  color: var(--white);
+}
+
+/* ==========================================================================
+   1. NAVBAR
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--primary-dark);
+  line-height: 1.1;
+}
+
+.logo-sub {
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--primary-brown);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.nav-link {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  transition: var(--transition);
+  padding: 6px 0;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-brown);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-brown);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Tombol Keranjang Navbar */
+.cart-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--secondary-cream);
+  color: var(--primary-dark);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+}
+
+.cart-btn:hover {
+  background-color: var(--primary-brown);
+  color: var(--white);
+}
+
+.cart-icon {
+  font-size: 1.1rem;
+}
+
+.cart-badge {
+  background-color: var(--primary-dark);
+  color: var(--white);
+  font-size: 0.75rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.cart-btn:hover .cart-badge {
+  background-color: var(--white);
+  color: var(--primary-dark);
+}
+
+/* Mobile Toggle Hamburger */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  padding: 6px;
+}
+
+.mobile-toggle span {
+  width: 24px;
+  height: 2.5px;
+  background-color: var(--primary-dark);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ==========================================================================
+   2. HERO SECTION
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  /* Background foto kedai kopi dengan suasana hangat */
+  background-image: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1600&auto=format&fit=crop&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(43, 29, 20, 0.72); /* Overlay gelap kecoklatan agar teks sangat kontras */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px 15px;
+}
+
+.hero-tagline {
+  font-size: 1.05rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--secondary-cream);
+  margin-bottom: 8px;
+}
+
+.hero-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--secondary-cream);
+  margin-bottom: 12px;
+}
+
+.hero-slogan {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--white);
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .btn-primary {
+  background-color: var(--primary-brown);
+  border: 1.5px solid var(--primary-brown);
+}
+
+.hero-buttons .btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.hero-buttons .btn-secondary {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.hero-buttons .btn-secondary:hover {
+  background-color: var(--white);
+  color: var(--primary-dark);
+}
+
+/* ==========================================================================
+   3. MENU SECTION
+   ========================================================================== */
+.menu-section {
+  padding: 70px 0;
+  background-color: var(--light-cream);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.product-card {
+  background-color: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.product-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: var(--secondary-cream);
+  position: relative;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.04);
+}
+
+.product-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+}
+
+.product-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.product-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-color);
+  padding-top: 14px;
+}
+
+.product-price {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-brown);
+}
+
+.add-to-cart-btn {
+  background-color: var(--primary-dark);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: var(--transition);
+}
+
+.add-to-cart-btn:hover {
+  background-color: var(--primary-brown);
+}
+
+/* ==========================================================================
+   4. ABOUT SECTION
+   ========================================================================== */
+.about-section {
+  padding: 60px 0;
+  background-color: var(--white);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.about-box {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--secondary-cream);
+  padding: 40px 30px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.about-box .section-header {
+  margin-bottom: 20px;
+}
+
+.about-text {
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.about-quote {
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--primary-brown);
+}
+
+/* ==========================================================================
+   5. CONTACT SECTION
+   ========================================================================== */
+.contact-section {
+  padding: 70px 0;
+  background-color: var(--light-cream);
+}
+
+.contact-card {
+  max-width: 650px;
+  margin: 0 auto;
+  background-color: var(--white);
+  padding: 35px 30px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-name {
+  font-size: 1.35rem;
+  color: var(--primary-dark);
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 12px;
+}
+
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.contact-item .icon {
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.contact-item strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-item p,
+.contact-item a {
+  font-size: 1.05rem;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.contact-item a:hover {
+  color: var(--primary-brown);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
+.footer {
+  background-color: var(--primary-dark);
+  color: var(--secondary-cream);
+  padding: 30px 0;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.footer-slogan {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--secondary-cream);
+}
+
+/* ==========================================================================
+   7. MODAL STYLES (CART & CHECKOUT)
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(43, 29, 20, 0.6);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.modal-backdrop.active {
+  display: flex;
+}
+
+.modal-card {
+  background-color: var(--white);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-header {
+  padding: 16px 20px;
+  background-color: var(--secondary-cream);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title {
+  font-size: 1.2rem;
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.close-btn {
+  background: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--primary-dark);
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.close-btn:hover {
+  color: var(--danger-color);
+}
+
+/* Cart Body */
+.cart-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex-grow: 1;
+  max-height: 380px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cart-empty {
+  text-align: center;
+  padding: 40px 10px;
+  color: var(--text-muted);
+}
+
+.cart-empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  gap: 10px;
+}
+
+.cart-item-info {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-weight: 600;
+  color: var(--primary-dark);
+  font-size: 0.95rem;
+}
+
+.cart-item-price {
+  font-size: 0.85rem;
+  color: var(--primary-brown);
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  background-color: var(--secondary-cream);
+  border: 1px solid var(--border-color);
+  font-weight: 700;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.qty-btn:hover {
+  background-color: var(--primary-brown);
+  color: var(--white);
+}
+
+.qty-number {
+  min-width: 22px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.delete-btn {
+  background: none;
+  color: var(--danger-color);
+  font-size: 1.1rem;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 6px;
+  transition: var(--transition);
+}
+
+.delete-btn:hover {
+  background-color: #FDEDEC;
+}
+
+.cart-summary {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 2px solid var(--border-color);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.total-price {
+  font-size: 1.25rem;
+  color: var(--primary-brown);
+  font-weight: 800;
+}
+
+.modal-footer {
+  padding: 14px 20px;
+  background-color: #FCFBF9;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   8. CHECKOUT FORM STYLES
+   ========================================================================== */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-body {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 420px;
+}
+
+.order-summary-small {
+  background-color: var(--secondary-cream);
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+  border-left: 4px solid var(--primary-brown);
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 5px;
+}
+
+.form-group .required {
+  color: var(--danger-color);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  background-color: var(--white);
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-brown);
+  box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+/* Success Modal */
+.success-modal-card {
+  text-align: center;
+  padding: 35px 25px;
+}
+
+.success-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.success-title {
+  font-size: 1.4rem;
+  color: var(--primary-dark);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+/* ==========================================================================
+   9. RESPONSIVE DESIGN (HP & TABLET)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .hero-slogan {
+    font-size: 1.1rem;
+  }
+
+  /* Hamburger & Menu Mobile */
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    flex-direction: column;
+    gap: 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .nav-menu.open {
+    max-height: 250px;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 14px 0;
+    border-top: 1px solid var(--secondary-cream);
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .nav-link.active {
+    background-color: var(--secondary-cream);
+  }
+
+  .cart-text {
+    display: none; /* Sembunyikan teks 'Cart' di HP agar hemat ruang */
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+}
